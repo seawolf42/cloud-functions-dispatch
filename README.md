@@ -6,7 +6,7 @@ This is useful for tasks such as the following:
 
 * update a database record separately from this process
 * fan-out of a large job into chunks that are completed independently
-* run secondary processes as side-effects of receivig a request
+* run secondary processes as side-effects of receiving a request
 
 Basically any task that requires parameters but not process state and does not need to return a value is a great candidate for dispatching.
 
@@ -50,21 +50,22 @@ The following program demonstrates the basic use of dispatching:
 from cloud_functions_dispatch import dispatch
 
 @dispatch
-my_func(a, b, c):
+def my_func(a, b, c):
     if a > b:
         log.warning('a is too large!')
     log.info('a is just right')
 
-my_func(1, 2, 3)
+def call_my_func()
+    my_func(1, 2, 3)
 ```
 
-When you execute this code, you will see something like the following in your cloud function logs:
+When you execute this code, and eventually call `my_func` or `call_my_func`, you will see something like the following in your local or cloud function logs (depending on where you are running it):
 
 ```
 I 2020-03-13T22:24:35.427Z my-topic 1043501608491014 pushing function call to pubsub: myapp.my_func
 ```
 
-... followed shortly by something like this, showing the function execution:
+... followed shortly by something like this in your cloud function logs, showing the function execution:
 
 ```
 D 2020-03-13T22:24:35.436557480Z my-topic 1043501608491013 Function execution started
@@ -117,7 +118,7 @@ $ PYTHONPATH=..:$PYTHONPATH python -c "import functions; functions.echo(1, 2, x=
 After a few seconds you will see the output of your cloud function showing the arguments passed.
 
 
-## Security Considerations(#security)
+## <a name="security"></a>Security Considerations
 
 Failure to secure publishing to the topic being consumed by this library will allow publishers to construct malicious messages that can run arbitrary code on the receiving end. This is due to a design choice of Python's `pickle` library, which unpickles in a way that unpacks and executes code if the serialized object contains any. This library will never construct a payload with executable components, but an attacker could do so.
 
