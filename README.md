@@ -55,11 +55,11 @@ def my_func(a, b, c):
         log.warning('a is too large!')
     log.info('a is just right')
 
-def call_my_func()
+def main()
     my_func(1, 2, 3)
 ```
 
-When you execute this code, and eventually call `my_func` or `call_my_func`, you will see something like the following in your local or cloud function logs (depending on where you are running it):
+When you execute this code, and eventually call `main`, you will see something like the following in your local or cloud function logs (depending on where you are running it):
 
 ```
 I 2020-03-13T22:24:35.427Z my-topic 1043501608491014 pushing function call to pubsub: myapp.my_func
@@ -82,10 +82,10 @@ Your cloud function will need an entry point. You should use the provided `execu
 
 ```python
 # main.py
-from cloud_functions_dispatch import execute_dispatched
+from cloud_functions_dispatch import execute as execute_dispatched
 ```
 
-Don't forget to include `cloud_functions_dispatch` in your `requirements.txt` as well.
+Don't forget to include `cloud-functions-dispatch` in your `requirements.txt` as well.
 
 Your codebase should then be deployed to Cloud Functions with the entrypoint specified:
 
