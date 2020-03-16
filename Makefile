@@ -4,6 +4,8 @@
 
 
 PYTHON = env/bin/python
+PIP = ${PYTHON} -m pip
+PIPENV = ${PYTHON} -m pipenv
 PYTEST = pytest
 FLAKE8 = flake8
 TWINE = twine
@@ -21,6 +23,30 @@ clean:
 	find . -name '*.pyc' -delete
 	find . -name '*.pyo' -delete
 	find . -type d -d -name __pycache__ -exec rm -rf {} \;
+
+
+#
+# commands for virtual env maintenance
+#
+
+.PHONY: reqs
+reqs: reqs.lock reqs.install
+
+.PHONY: reqs.clean
+reqs.clean:
+	${PIP} freeze | xargs ${PIP} uninstall -y
+	${PIP} install pipenv
+
+.PHONY: reqs.install
+reqs.install:
+	${PIPENV} sync --dev
+
+.PHONY: reqs.lock
+reqs.lock:
+	${PIPENV} lock
+
+.PHONY: reqs.update
+reqs.update: reqs.lock reqs.install
 
 
 #

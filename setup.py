@@ -10,8 +10,6 @@ with open('README.md') as fin:
 
 install_dependencies = ('google-cloud-pubsub>=1.3',)
 
-test_dependencies = ('autopep8', 'flake8', 'mock', 'pytest', 'pytest-mock')
-
 
 setuptools.setup(
     name='cloud-functions-dispatch',
@@ -38,5 +36,4 @@ setuptools.setup(
     ],
     python_requires='>=3.7',
     install_requires=install_dependencies,
-    tests_require=install_dependencies + test_dependencies,
 )
