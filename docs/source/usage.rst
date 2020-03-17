@@ -7,7 +7,7 @@ A very simple example is shown below. It is broken into three parts:
 * invocation (calling)
 * execution (receiving)
 
-Note however that this is (nearly) a single codebase; the deployable artifacts only differ in ``main.py``, if at all.
+Note however that this is (nearly) a single codebase; though you are deploying to two places (some application and a cloud function to dispatch to) the deployable artifacts only differ in ``main.py``, if at all.
 
 
 Definition
@@ -29,7 +29,7 @@ Once your function is defined in your application, you call it just like any oth
 .. literalinclude:: ../../sample/my_module.py
     :pyobject: call_dispatched_function
 
-When you execute this code by calling ``my_module.test_function()``, your cloud function will be invoked and the specified function will be executed remotely.
+When you execute this code by calling ``my_module.call_dispatched_function()``, your cloud function will be invoked and the specified function will be executed remotely.
 
 **Note:** for obvious reasons, the dispatched execution won't work until the cloud function is properly deployed as specified below.
 
@@ -75,8 +75,8 @@ Deployable Example
 
 A complete, working sample can be found in the ``./sample`` directory. To see it in action:
 
+* Enable Cloud Functions and PubSub in GCP (see Google documentation for this)
 * Create a pubsub topic in GCP (the command below assumes it's ``my-topic``)
-* Enable the Cloud Functions API in GCP
 * Pick an unused name for your function (the command below assumes it's ``my-func``)
 
 Then run the following command:
