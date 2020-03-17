@@ -13,7 +13,7 @@ install_dependencies = ('google-cloud-pubsub>=1.3',)
 
 setuptools.setup(
     name='cloud-functions-dispatch',
-    version='0.9.0',
+    version='0.9.1',
     author='jeffrey k eliasen',
     author_email='jeff@jke.net',
     description='Dispatches decorated in-process function calls to cloud function for execution',
