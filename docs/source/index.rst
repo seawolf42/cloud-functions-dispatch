@@ -6,6 +6,8 @@
 Cloud Functions Dispatch
 ====================================================
 
+Cloud Functions Dispatch gives you the ability to dispatch in-process no-response function calls to a remote cloud function by applying a decorator to your function.
+
 .. toctree::
     :maxdepth: 2
     :caption: Contents:
