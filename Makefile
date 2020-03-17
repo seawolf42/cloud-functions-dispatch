@@ -6,9 +6,9 @@
 PYTHON = env/bin/python
 PIP = ${PYTHON} -m pip
 PIPENV = ${PYTHON} -m pipenv
-PYTEST = pytest
-FLAKE8 = flake8
-TWINE = twine
+PYTEST = ${PYTHON} -m pytest
+FLAKE8 = ${PYTHON} -m flake8
+TWINE = ${PYTHON} -mtwine
 
 #
 # commands for artifact cleanup
