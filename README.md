@@ -12,10 +12,9 @@ Basically any task that accepts some set of serializable parameters but not any 
 
 Functions are asynchronously executed with no mechanism for returning a value to the caller. From the caller's perspective, these functions are "fire and forget". Support for functions that return values may be implemented in a future version.
 
-
 ## Example
 
-Imagine you have a function that you call every time a row in a certain table :
+Imagine you have a function that you call every time a row in a certain table changes:
 
 ```python
 def save(users, context):
@@ -49,6 +48,6 @@ def update_related(user, context):
         item.save()
 ```
 
-Now every time you call `update_related`, the full parameter list is serialized, compressed, and pushed to PubSub. A cloud function also containing the same function will receive the message and execute the code. 
+Now every time you call `update_related`, the full parameter list is serialized, compressed, and pushed to PubSub. A cloud function also containing the same function will receive the message and execute the code.
 
 Refer to the [Project Documentation](https://cloud-functions-dispatch.readthedocs.io/) for installation and usage.

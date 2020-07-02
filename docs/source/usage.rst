@@ -83,9 +83,9 @@ Then run the following command:
 
 ::
 
-    $ gcloud functions deploy my-func --trigger-topic=my-topic --source=sample --entry-point=execute_dispatched --runtime=python37 --memory=128MB --max-instances=1 --set-env-vars CLOUD_FUNCTIONS_DISPATCH_GCP_PUBSUB_TOPIC=my-topic
+    $ gcloud functions deploy my-func --project=my-project --trigger-topic=my-topic --source=sample --entry-point=execute_dispatched --runtime=python37 --memory=128MB --max-instances=1 --set-env-vars CLOUD_FUNCTIONS_DISPATCH_GCP_PUBSUB_TOPIC=my-topic
 
-Now set `GCP_PROJECT` and `CLOUD_FUNCTIONS_DISPATCH_GCP_PUBSUB_TOPIC` locally and:
+Now set ``GCP_PROJECT`` and ``CLOUD_FUNCTIONS_DISPATCH_GCP_PUBSUB_TOPIC`` locally and:
 
 ::
 
