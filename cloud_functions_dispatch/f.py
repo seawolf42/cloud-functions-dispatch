@@ -35,7 +35,7 @@ def dispatch(func):
 
     @functools.wraps(func)
     def send(*args, **kwargs):
-        log.debug(f'calling remote function: %s', name)
+        log.debug('calling remote function: %s', name)
         signature.bind(*args, **kwargs)
         _send_to_remote(_F(name=name, args=args, kwargs=kwargs))
 
